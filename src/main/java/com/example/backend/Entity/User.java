@@ -46,10 +46,11 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-    public User(String name, String email, String phone, List<Role> roles) {
+    public User(String name, String email, String phone, String password, List<Role> roles) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.password = password;
         this.roles = roles;
     }
 

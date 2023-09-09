@@ -52,6 +52,7 @@ public class AuthServiceImpl implements AuthService {
                 userDTO.getName(),
                 userDTO.getEmail(),
                 userDTO.getPhone(),
+                userDTO.getPassword(),
                 roles
         );
         usersRepository.save(user);

@@ -52,11 +52,11 @@ public class AuthServiceImpl implements AuthService {
                 userDTO.getName(),
                 userDTO.getEmail(),
                 userDTO.getPhone(),
-                userDTO.getPassword(),
+                passwordEncoder.encode(userDTO.getPassword()),
                 roles
         );
-        usersRepository.save(user);
-        return ResponseEntity.ok(null);
+        User save = usersRepository.save(user);
+        return ResponseEntity.ok(save);
     }
 
 

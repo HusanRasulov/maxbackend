@@ -25,7 +25,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public HttpEntity<?> register(@RequestBody ReqLogin dto) {
+    public HttpEntity<?> register(@RequestBody UserDTO dto) {
         return service.register(dto);
     }
 
@@ -38,5 +38,4 @@ public class AuthController {
     public HttpEntity<?> decode(@CurrentUser User user) {
         return ResponseEntity.ok(user);
     }
-
 }

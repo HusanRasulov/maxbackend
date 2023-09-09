@@ -22,15 +22,34 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
+    private String name;
+
+    private String email;
+
+    private String nickname;
+
+    private String bio;
+
     @Column(unique = true, nullable = false)
     private String phone;
+
+    @Column(nullable = false)
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
     public User(String phone, String password, List<Role> roles) {
         this.phone = phone;
         this.password = password;
+        this.roles = roles;
+    }
+
+    public User(String name, String email, String phone, List<Role> roles) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
         this.roles = roles;
     }
 

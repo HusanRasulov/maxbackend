@@ -10,6 +10,7 @@ import com.example.backend.Repository.UserRepo;
 import com.example.backend.Security.JwtService;
 import com.example.backend.exceptions.InvalidCredentialsException;
 import io.jsonwebtoken.Jwts;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.http.HttpEntity;
@@ -35,9 +36,11 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
 
+
+    @Transactional
     @SneakyThrows
     @Override
-    public HttpEntity<?> register(ReqLogin loginReq) {
+    public HttpEntity<?> register(UserDTO userDTO) {
         List<Role> roles = new ArrayList<>();
         List<Role> roleUser = roleRepo.findAllByName(UserRoles.ROLE_STUDENT);
         if (roleUser == null) {
@@ -45,7 +48,12 @@ public class AuthServiceImpl implements AuthService {
         } else {
             roles.add(roleUser.get(0));
         }
-        User user = new User(loginReq.getPhone(), passwordEncoder.encode(loginReq.getPassword()), roles);
+        User user = new User(
+                userDTO.getName(),
+                userDTO.getEmail(),
+                userDTO.getPhone(),
+                roles
+        );
         usersRepository.save(user);
         return ResponseEntity.ok(null);
     }

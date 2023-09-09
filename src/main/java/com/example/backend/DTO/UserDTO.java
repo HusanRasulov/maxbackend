@@ -9,6 +9,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserDTO {
     private String phone;
+
+    private String name;
+
+    private String email;
+
+    private String nickname;
+
+    private String bio;
+
     private String password;
+
     private boolean rememberMe;
 }

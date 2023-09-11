@@ -23,12 +23,9 @@ public class CourseVideo {
 
     private String youtubeId;
 
-    private Boolean isFinished;
-
-    public CourseVideo(Course course, String name, String youtubeId, Boolean isFinished) {
+    public CourseVideo(Course course, String name, String youtubeId) {
         this.course = course;
         this.name = name;
         this.youtubeId = youtubeId;
-        this.isFinished = isFinished;
     }
 }

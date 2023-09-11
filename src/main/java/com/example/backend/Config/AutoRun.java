@@ -53,62 +53,52 @@ public class AutoRun implements CommandLineRunner {
                 new CourseVideo(
                         courseList.get(0),
                         "Html",
-                        "https://www.youtube.com/embed/qz0aGYrrlhU",
-                        false
+                        "qz0aGYrrlhU"
                 ),
                 new CourseVideo(
                         courseList.get(0),
                         "css",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "jx5jmI0UlXU"
                 ),
                 new CourseVideo(
                         courseList.get(1),
                         "state",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "1PnVor36_40"
                 ),
                 new CourseVideo(
                         courseList.get(1),
                         "setState",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "1PnVor36_40"
                 ),
                 new CourseVideo(
                         courseList.get(2),
                         "express",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "lY6icfhap2o"
                 ),
                 new CourseVideo(
                         courseList.get(2),
                         "run time environment",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "1PnVor36_40"
                 ),
                 new CourseVideo(
                         courseList.get(3),
                         "real time database",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "1PnVor36_40"
                 ),
                 new CourseVideo(
                         courseList.get(3),
                         "firestore",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "1PnVor36_40"
                 ),
                 new CourseVideo(
                         courseList.get(4),
                         "mockito",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "1PnVor36_40"
                 ),
                 new CourseVideo(
                         courseList.get(4),
                         "unit test",
-                        "https://www.youtube.com/embed/1PnVor36_40",
-                        false
+                        "3kzHmaeozDI"
                 )
         );
         courseVideoRepo.saveAll(videos);

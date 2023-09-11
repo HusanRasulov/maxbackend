@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public interface CourseUserRepo extends JpaRepository<CourseUser, UUID> {
     @Query(value = """
-       SELECT cu.course.id as id, cu.course.name as courseName, cu.course.description as courseDescription from CourseUser cu
+       SELECT cu.course.id as id, cu.user.id as userId, cu.course.name as courseName, cu.course.description as courseDescription from CourseUser cu
        WHERE cu.user.id =:userId
 """)
     List<CourseProjection> getCoursesAndVideosByUserId(@Param("userId") UUID userId);

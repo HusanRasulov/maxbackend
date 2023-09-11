@@ -10,4 +10,6 @@ public interface CourseService {
     HttpEntity<?> saveCoursesToUserCache(UUID userId, UUID courseId);
 
     HttpEntity<?> getCoursesByUserId(UUID userId);
+
+    HttpEntity<?> updateFinishedVideos(UUID userId, UUID videoId);
 }

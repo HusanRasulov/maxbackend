@@ -15,7 +15,7 @@ import java.util.UUID;
 public class UserController {
     private final UserService userService;
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public HttpEntity<?> editUser(@PathVariable UUID id, @RequestBody UserDTO userDTO) {
         return userService.editUser(id, userDTO);
     }

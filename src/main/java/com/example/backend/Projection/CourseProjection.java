@@ -8,10 +8,12 @@ import java.util.UUID;
 public interface CourseProjection {
     UUID getId();
 
+    UUID getUserId();
+
     String getCourseName();
 
     String getCourseDescription();
 
-    @Value("#{@courseVideoRepo.findAllByCourseId(target.id)}")
+    @Value("#{@courseVideoRepo.findVideos(target.id,target.userId)}")
     List<VideoProjection> getCourseVideo();
 }

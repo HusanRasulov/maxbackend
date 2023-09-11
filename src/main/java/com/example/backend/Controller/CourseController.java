@@ -25,7 +25,12 @@ public class CourseController {
     }
 
     @GetMapping("/video")
-    public HttpEntity<?> getCoursesByUserId(@RequestParam UUID userId){
+    public HttpEntity<?> getCoursesByUserId(@RequestParam UUID userId) {
         return courseService.getCoursesByUserId(userId);
+    }
+
+    @PutMapping
+    public HttpEntity<?> updateFinishedVideos(@RequestParam UUID userId, @RequestParam UUID videoId) {
+        return courseService.updateFinishedVideos(userId, videoId);
     }
 }

@@ -30,7 +30,7 @@ public class CourseController {
     }
 
     @PutMapping
-    public HttpEntity<?> updateFinishedVideos(@RequestParam UUID userId, @RequestParam UUID videoId) {
-        return courseService.updateFinishedVideos(userId, videoId);
+    public HttpEntity<?> updateFinishedVideos(@RequestParam UUID userId, @RequestParam UUID youtubeId) {
+        return courseService.updateFinishedVideos(userId, youtubeId);
     }
 }

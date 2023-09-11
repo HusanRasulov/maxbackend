@@ -61,8 +61,8 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public HttpEntity<?> updateFinishedVideos(UUID userId, UUID videoId) {
-//        courseUserRepo.updateFinishedVideosByUserId(userId, videoId);
-        return null;
+    public HttpEntity<?> updateFinishedVideos(UUID userId, UUID youtubeId) {
+        courseUserRepo.updateFinishedVideosByUserId(userId, youtubeId);
+        return ResponseEntity.ok("updated");
     }
 }

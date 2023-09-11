@@ -15,4 +15,10 @@ public interface CourseUserRepo extends JpaRepository<CourseUser, UUID> {
        WHERE cu.user.id =:userId
 """)
     List<CourseProjection> getCoursesAndVideosByUserId(@Param("userId") UUID userId);
+
+
+    @Query(value = """
+        UPDATE UserVideos SET isFinished=true WHERE user.id=:userId AND courseVideo.course.id=:youtubeId
+""")
+    void updateFinishedVideosByUserId(UUID userId, UUID youtubeId);
 }

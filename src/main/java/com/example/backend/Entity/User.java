@@ -25,14 +25,12 @@ public class User implements UserDetails {
 
     private String name;
 
-    private String email;
-
     private String nickname;
 
     private String bio;
 
     @Column(unique = true, nullable = false)
-    private String phone;
+    private String email;
 
     @Column(nullable = false)
     private String password;
@@ -40,16 +38,15 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 
-    public User(String phone, String password, List<Role> roles) {
-        this.phone = phone;
+    public User(String email, String password, List<Role> roles) {
+        this.email = email;
         this.password = password;
         this.roles = roles;
     }
 
-    public User(String name, String email, String phone, String password, List<Role> roles) {
+    public User(String name, String email, String password, List<Role> roles) {
         this.name = name;
         this.email = email;
-        this.phone = phone;
         this.password = password;
         this.roles = roles;
     }
@@ -66,7 +63,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return phone;
+        return email;
     }
 
     @Override

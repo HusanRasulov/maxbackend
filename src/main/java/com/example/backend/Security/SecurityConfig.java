@@ -44,7 +44,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return username -> usersRepository.findByPhone(username).orElseThrow();
+        return username -> usersRepository.findByEmail(username).orElseThrow();
     }
 
     @Bean

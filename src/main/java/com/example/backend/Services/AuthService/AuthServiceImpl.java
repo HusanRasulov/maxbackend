@@ -46,7 +46,6 @@ public class AuthServiceImpl implements AuthService {
         User user = new User(
                 userDTO.getName(),
                 userDTO.getEmail(),
-                userDTO.getPhone(),
                 passwordEncoder.encode(userDTO.getPassword()),
                 roles
         );
@@ -57,20 +56,20 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public HttpEntity<?> login(UserDTO userDTO) {
-        Optional<User> users = usersRepository.findByPhone(userDTO.getPhone());
+        Optional<User> users = usersRepository.findByEmail(userDTO.getEmail());
         if (users.isEmpty()) throw new InvalidCredentialsException();
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getPhone(), userDTO.getPassword()));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
         } catch (BadCredentialsException e) {
             throw new InvalidCredentialsException();
         }
-        System.out.println(userDTO.getPhone());
-        User userByPhone = users.orElseThrow();
+        System.out.println(userDTO.getEmail());
+        User userByEmail = users.orElseThrow();
         Map<String, Object> map = new HashMap<>();
-        map.put("access_token", jwtService.generateJwtToken(userByPhone));
-        map.put("refresh_token", jwtService.generateJwtRefreshToken(userByPhone));
-        System.out.println(userByPhone.getRoles());
-        map.put("roles", userByPhone.getRoles());
+        map.put("access_token", jwtService.generateJwtToken(userByEmail));
+        map.put("refresh_token", jwtService.generateJwtRefreshToken(userByEmail));
+        System.out.println(userByEmail.getRoles());
+        map.put("roles", userByEmail.getRoles());
         return ResponseEntity.ok(map);
     }
 

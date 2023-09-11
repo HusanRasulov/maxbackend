@@ -40,7 +40,6 @@ public class AutoRun implements CommandLineRunner {
         }
     }
 
-
     private void saveCourse() {
         List<Course> courses = List.of(
                 new Course("Frontend", "you can learn frontend"),
@@ -120,8 +119,11 @@ public class AutoRun implements CommandLineRunner {
         List<Role> roleList = new ArrayList<>();
         roleList.add(roleRepo.findByName(UserRoles.ROLE_STUDENT));
         User user = User.builder()
-                .phone("990453027")
-                .password(passwordEncoder.encode("00000000"))
+                .email("test@gmail.com")
+                .bio("Testing is amazing")
+                .nickname("Nick")
+                .name("Tester")
+                .password(passwordEncoder.encode("test.uz"))
                 .roles(roleList)
                 .build();
         userRepo.save(user);

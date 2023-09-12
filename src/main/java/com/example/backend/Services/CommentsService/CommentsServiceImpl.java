@@ -42,7 +42,7 @@ public class CommentsServiceImpl implements CommentsService {
 
     @Override
     public HttpEntity<?> getCommentsByVideoId(UUID videoId) {
-        List<CommentsProjection> comments = commentsRepo.findAllByCourseVideoId(videoId);
+        List<CommentsProjection> comments = commentsRepo.findAllByCourseVideoIdOrderByTime(videoId);
         return ResponseEntity.ok(comments);
     }
 }

@@ -9,5 +9,5 @@ import java.util.UUID;
 
 public interface CommentsRepo extends JpaRepository<Comments, UUID> {
 
-    List<CommentsProjection> findAllByCourseVideoId(UUID videoId);
+    List<CommentsProjection> findAllByCourseVideoIdOrderByTime(UUID videoId);
 }

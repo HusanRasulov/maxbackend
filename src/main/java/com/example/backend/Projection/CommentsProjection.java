@@ -1,7 +1,5 @@
 package com.example.backend.Projection;
 
-import jakarta.persistence.Column;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 

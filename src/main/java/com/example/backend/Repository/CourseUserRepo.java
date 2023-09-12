@@ -2,7 +2,9 @@ package com.example.backend.Repository;
 
 import com.example.backend.Entity.CourseUser;
 import com.example.backend.Projection.CourseProjection;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -16,9 +18,10 @@ public interface CourseUserRepo extends JpaRepository<CourseUser, UUID> {
 """)
     List<CourseProjection> getCoursesAndVideosByUserId(@Param("userId") UUID userId);
 
-
+    @Modifying
+    @Transactional
     @Query(value = """
-        UPDATE UserVideos SET isFinished=true WHERE user.id=:userId AND courseVideo.course.id=:youtubeId
+        UPDATE UserVideos us SET us.isFinished=true WHERE us.user.id=:userId AND us.courseVideo.id =:youtubeId
 """)
     void updateFinishedVideosByUserId(UUID userId, UUID youtubeId);
 }

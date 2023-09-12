@@ -11,5 +11,5 @@ public interface CourseService {
 
     HttpEntity<?> getCoursesByUserId(UUID userId);
 
-    HttpEntity<?> updateFinishedVideos(UUID userId, UUID videoId);
+    HttpEntity<?> updateFinishedVideos(UUID userId, UUID youtubeId);
 }

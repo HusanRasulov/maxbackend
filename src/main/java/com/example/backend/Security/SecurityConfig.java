@@ -26,7 +26,6 @@ public class SecurityConfig {
     private final UserRepo usersRepository;
     private final MyFilter myFilter;
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -41,7 +40,6 @@ public class SecurityConfig {
                 .addFilterBefore(myFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
-
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> usersRepository.findByEmail(username).orElseThrow();

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -17,10 +18,19 @@ public class Message {
     private UUID id;
 
     @ManyToOne
-    private User senderId;
+    private User sender;
 
     @ManyToOne
-    private User receiverId;
+    private User receiver;
 
     private String message;
+
+    private LocalDateTime time;
+
+    public Message(User sender, User receiver, String message, LocalDateTime time) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.message = message;
+        this.time = time;
+    }
 }

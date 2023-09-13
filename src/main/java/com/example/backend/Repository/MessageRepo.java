@@ -9,8 +9,8 @@ import java.util.UUID;
 
 public interface MessageRepo extends JpaRepository<Message, UUID> {
     @Query("SELECT m FROM Message m " +
-            "WHERE (BIN_TO_UUID(m.sender.id) = :senderId AND BIN_TO_UUID(m.receiver.id) = :receiverId) " +
-            "OR (BIN_TO_UUID(m.sender.id) = :receiverId AND BIN_TO_UUID(m.receiver.id) = :senderId) " +
+            "WHERE (m.sender.id = :senderId AND m.receiver.id = :receiverId) " +
+            "OR (m.sender.id = :receiverId AND m.receiver.id = :senderId) " +
             "ORDER BY m.time")
     List<Message> findMessagesBySenderAndReceiver(UUID senderId, UUID receiverId);
 }

@@ -13,8 +13,4 @@ public interface UserRepo extends JpaRepository<User, UUID> {
 
     List<User> findAllByIdIsNot(UUID myId);
 
-//    @Query(value = """
-//        SELECT * FROM users where BIN_TO_UUID(id)!=:myId
-//""",nativeQuery = true)
-//    List<User> findAllUsersWithoutMe(UUID myId);
 }

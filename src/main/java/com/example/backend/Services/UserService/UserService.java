@@ -8,4 +8,6 @@ import java.util.UUID;
 public interface UserService {
 
     HttpEntity<?> editUser(UUID id, UserDTO userDTO);
+
+    HttpEntity<?> findAllUsers(UUID myId);
 }

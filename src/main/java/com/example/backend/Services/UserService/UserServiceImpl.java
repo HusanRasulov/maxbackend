@@ -8,6 +8,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,6 +29,12 @@ public class UserServiceImpl implements UserService {
             User save = userRepo.save(user);
             return ResponseEntity.ok(save);
         }
+        return ResponseEntity.ok("Something went wrong");
+    }
+
+    @Override
+    public HttpEntity<?> findAllUsers(UUID myId) {
+        List<User> users = userRepo.findAllUsersWithoutMe(myId);
         return null;
     }
 }

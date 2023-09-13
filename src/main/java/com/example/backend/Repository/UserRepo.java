@@ -12,4 +12,9 @@ import java.util.UUID;
 public interface UserRepo extends JpaRepository<User, UUID> {
 
     Optional<User> findByEmail(String email);
+
+    @Query(value = """
+        SELECT * FROM users where BIN_TO_UUID(id)!=:myId
+""",nativeQuery = true)
+    List<User> findAllUsersWithoutMe(UUID myId);
 }

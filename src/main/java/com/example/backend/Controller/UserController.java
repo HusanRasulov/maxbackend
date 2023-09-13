@@ -19,4 +19,9 @@ public class UserController {
     public HttpEntity<?> editUser(@PathVariable UUID id, @RequestBody UserDTO userDTO) {
         return userService.editUser(id, userDTO);
     }
+
+    @GetMapping
+    public HttpEntity<?> getAllUsers(@RequestParam UUID myId){
+        return userService.findAllUsers(myId);
+    }
 }

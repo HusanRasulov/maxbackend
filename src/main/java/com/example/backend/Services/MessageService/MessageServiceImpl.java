@@ -39,7 +39,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public HttpEntity<?> getMessage(UUID senderId, UUID receiverId) {
-        List<Message> messages =  messageRepo.findUserMessages(senderId, receiverId);
+        List<Message> messages =  messageRepo.findMessagesBySenderAndReceiver(senderId, receiverId);
         return ResponseEntity.ok(messages);
     }
 }

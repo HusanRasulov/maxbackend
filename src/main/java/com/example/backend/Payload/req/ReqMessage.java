@@ -11,9 +11,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @Data
 public class ReqMessage {
-    private UUID sender;
+    private UUID senderId;
 
-    private UUID receiver;
+    private UUID receiverId;
 
     private String message;
 

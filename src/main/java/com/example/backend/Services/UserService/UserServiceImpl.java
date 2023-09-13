@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public HttpEntity<?> findAllUsers(UUID myId) {
-        List<User> users = userRepo.findAllUsersWithoutMe(myId);
+        List<User> users = userRepo.findAllByIdIsNot(myId);
         return ResponseEntity.ok(users);
     }
 }

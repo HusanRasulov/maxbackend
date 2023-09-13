@@ -24,8 +24,8 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public HttpEntity<?> sendMessage(ReqMessage reqMessage) {
-        User sender = userRepo.findById(reqMessage.getSender()).orElseThrow(() -> new NoSuchElementException("User not found with ID: " + reqMessage.getSender()));
-        User receiver = userRepo.findById(reqMessage.getReceiver()).orElseThrow(() -> new NoSuchElementException("User not found with ID: " + reqMessage.getReceiver()));
+        User sender = userRepo.findById(reqMessage.getSenderId()).orElseThrow(() -> new NoSuchElementException("User not found with ID: " + reqMessage.getSenderId()));
+        User receiver = userRepo.findById(reqMessage.getReceiverId()).orElseThrow(() -> new NoSuchElementException("User not found with ID: " + reqMessage.getReceiverId()));
         Message save = messageRepo.save(
                 new Message(
                         sender,

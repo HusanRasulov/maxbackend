@@ -55,20 +55,18 @@ public class CourseServiceImpl implements CourseService {
         return ResponseEntity.ok(courseUser);
     }
 
+    @Transactional
     @Override
     public HttpEntity<?> deleteCoursesFromUserCache(UUID userId, UUID courseId) {
         CourseUser courseUser = courseUserRepo.findByUserIdAndCourseId(userId, courseId);
-
-        if (courseUser != null) {
-            userVideoRepo.deleteByUserAndCourseVideo_Course(userId, courseId);
-
-            courseUserRepo.delete(courseUser);
-
-            return ResponseEntity.ok("Course removed from user cache successfully.");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Course not found in user cache.");
+        List<UserVideos> userVideos = userVideoRepo.findAllByUserId(userId);
+        for (UserVideos userVideo : userVideos) {
+            if (userVideo.getUser().getId().equals(userId)){
+                userVideoRepo.delete(userVideo);
+            }
         }
+        courseUserRepo.delete(courseUser);
+        return ResponseEntity.ok("deleted!");
     }
 
 

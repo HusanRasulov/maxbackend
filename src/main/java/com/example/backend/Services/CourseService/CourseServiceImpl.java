@@ -61,7 +61,7 @@ public class CourseServiceImpl implements CourseService {
         CourseUser courseUser = courseUserRepo.findByUserIdAndCourseId(userId, courseId);
         List<UserVideos> userVideos = userVideoRepo.findAllByUserId(userId);
         for (UserVideos userVideo : userVideos) {
-            if (userVideo.getUser().getId().equals(userId)){
+            if (userVideo.getUser().getId().equals(userId) && userVideo.getCourseVideo().getCourse().getId().equals(courseId)){
                 userVideoRepo.delete(userVideo);
             }
         }

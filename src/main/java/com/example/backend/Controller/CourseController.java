@@ -24,6 +24,11 @@ public class CourseController {
         return courseService.saveCoursesToUserCache(userId, courseId);
     }
 
+    @DeleteMapping
+    public HttpEntity<?> deleteCoursesByUserId(@RequestParam UUID userId, @RequestParam UUID courseId) {
+        return courseService.deleteCoursesFromUserCache(userId, courseId);
+    }
+
     @GetMapping("/video")
     public HttpEntity<?> getCoursesByUserId(@RequestParam UUID userId) {
         return courseService.getCoursesByUserId(userId);

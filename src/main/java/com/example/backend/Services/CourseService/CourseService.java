@@ -12,4 +12,6 @@ public interface CourseService {
     HttpEntity<?> getCoursesByUserId(UUID userId);
 
     HttpEntity<?> updateFinishedVideos(UUID userId, UUID youtubeId);
+
+    HttpEntity<?> deleteCoursesFromUserCache(UUID userId, UUID courseId);
 }

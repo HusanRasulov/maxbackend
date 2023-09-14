@@ -7,4 +7,5 @@ import java.util.UUID;
 
 public interface UserVideoRepo extends JpaRepository<UserVideos, UUID> {
 
+    void deleteByUserAndCourseVideo_Course(UUID userId, UUID courseId);
 }

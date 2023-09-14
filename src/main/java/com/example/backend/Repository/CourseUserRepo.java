@@ -24,4 +24,6 @@ public interface CourseUserRepo extends JpaRepository<CourseUser, UUID> {
         UPDATE UserVideos us SET us.isFinished=true WHERE us.user.id=:userId AND us.courseVideo.id =:youtubeId
 """)
     void updateFinishedVideosByUserId(UUID userId, UUID youtubeId);
+
+    CourseUser findByUserIdAndCourseId(UUID userId, UUID courseId);
 }

@@ -6,6 +6,7 @@ import com.example.backend.Repository.*;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +54,23 @@ public class CourseServiceImpl implements CourseService {
         }
         return ResponseEntity.ok(courseUser);
     }
+
+    @Override
+    public HttpEntity<?> deleteCoursesFromUserCache(UUID userId, UUID courseId) {
+        CourseUser courseUser = courseUserRepo.findByUserIdAndCourseId(userId, courseId);
+
+        if (courseUser != null) {
+            userVideoRepo.deleteByUserAndCourseVideo_Course(userId, courseId);
+
+            courseUserRepo.delete(courseUser);
+
+            return ResponseEntity.ok("Course removed from user cache successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Course not found in user cache.");
+        }
+    }
+
 
     @Override
     public HttpEntity<?> getCoursesByUserId(UUID userId) {

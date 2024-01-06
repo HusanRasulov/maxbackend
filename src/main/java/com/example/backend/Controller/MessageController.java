@@ -20,7 +20,7 @@ public class MessageController {
     }
 
     @GetMapping
-    public HttpEntity<?> getMessage(@RequestParam UUID senderId, @RequestParam UUID receiverId) {
+    public HttpEntity<?> getMessages(@RequestParam UUID senderId, @RequestParam UUID receiverId) {
         return messageService.getMessage(senderId, receiverId);
     }
 }
